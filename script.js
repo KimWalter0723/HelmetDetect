@@ -12,11 +12,9 @@ navigator.mediaDevices.getUserMedia({ video: true })
 
 // 预加载 ONNX 模型（防止点击时重复加载）
 async function loadModel() {
-    if (!session) {
-        session = await ort.InferenceSession.create("best.onnx");
-    }
-    return session;
+    return await ort.InferenceSession.create("https://raw.githubusercontent.com/KimWalter0723/helmet-detect/main/best.onnx");
 }
+
 
 // 进行推理
 async function detect() {
